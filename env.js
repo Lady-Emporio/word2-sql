@@ -4,7 +4,7 @@ class ENV{
         this.dictionary={
             express_port:9678,
             express_host:"localhost",
-        }
+        };
     }
     get(name){
         const toReturn=this.dictionary[name];
