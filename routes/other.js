@@ -10,6 +10,7 @@ router.all("*",(req,res)=>{
         headers:req.headers,
         query:req.query,
         cookies:req.cookies,
+        body:req.body,
     }
     jsonParams=JSON.stringify(params,null,"\t");
 

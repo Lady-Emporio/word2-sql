@@ -1,0 +1,56 @@
+
+<html>
+<head>
+    <style>
+
+    table tr + tr:hover {
+    background-color: aqua;
+    }
+    </style>
+
+
+</head>
+<body>
+
+<h1>Groups:<%=page%></h1>
+<form>
+    <div id="main">
+            <table>
+                <th>Наименование</th>
+                <th>id</th>
+    <% groups.forEach(function(group ) { %>
+                <tr class="row" dbid="<%=group.id%>">
+                  <td><%=group.name%></td>
+                  <td><%=group.id%></td>
+                </tr>
+    <% }); %>
+    </table>
+    <div>
+      <input type="button" onclick="lastWords()" value="Last...">
+      <input type="button" onclick="nextWords()" value="Next...">
+    </div>
+    
+    </div>
+    
+    </form>
+    <script>
+            function reqListener () {
+                console.log(this.responseText);
+            }
+            
+            var rows=document.getElementsByClassName("row");
+            for (let row of rows){
+                row.onclick = function() {
+                    let idopen=row.attributes.dbid.value;
+                    var body = 'id=' + encodeURIComponent(idopen) +'&table=' + encodeURIComponent("group");
+    
+                    var oReq = new XMLHttpRequest();
+                    oReq.onload = reqListener;
+                    oReq.open("get", "/group/group", true);
+                    oReq.send(body);
+                };
+            }
+            
+        </script>
+</body>
+</html>
