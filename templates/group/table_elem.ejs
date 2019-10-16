@@ -2,7 +2,7 @@
     <th>Наименование</th>
     <th>id</th>
 <% groups.forEach(function(group ) { %>
-    <tr class="row" dbid="<%=group.id%>">
+    <tr class="row" dbid="<%=group.id%>"  onclick="openGroup(this)">
       <td><%=group.name%></td>
       <td><%=group.id%></td>
     </tr>

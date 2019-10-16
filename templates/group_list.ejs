@@ -25,7 +25,7 @@
                 <th>Наименование</th>
                 <th>id</th>
     <% groups.forEach(function(group ) { %>
-                <tr class="row" dbid="<%=group.id%>">
+                <tr class="row" dbid="<%=group.id%>" onclick="openGroup(this)">
                   <td><%=group.name%></td>
                   <td><%=group.id%></td>
                 </tr>
@@ -41,7 +41,14 @@
     
     </form>
     <script>
+      function test(){
+        console.log("Test:",new Date());
+      }
 
+      function openGroup(elem){
+        let idopen=elem.attributes.dbid.value;
+        location.href=`/group/object/${idopen}`;
+      }
             	function postAjax(url, data, success) {
                 var params = typeof data == 'string' ? data : Object.keys(data).map(
                         function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
@@ -74,23 +81,23 @@
               d.removeChild(t);
               d.innerHTML=res;
             }
-            var rows=document.getElementsByClassName("row");
-            for (let row of rows){
-                row.onclick = function() {
-                    let idopen=row.attributes.dbid.value;
-                    location.href=`/group/object/${idopen}`;
-                  	//postAjax('/group/group', { idopen: idopen, p2: 'Hello World' }, function(data){ console.log(data); });
-                    //var body = 'id=' + encodeURIComponent(idopen) +'&table=' + encodeURIComponent("group");
+            // var rows=document.getElementsByClassName("row");
+            // for (let row of rows){
+            //     row.onclick = function() {
+            //         let idopen=row.attributes.dbid.value;
+            //         location.href=`/group/object/${idopen}`;
+            //       	//postAjax('/group/group', { idopen: idopen, p2: 'Hello World' }, function(data){ console.log(data); });
+            //         //var body = 'id=' + encodeURIComponent(idopen) +'&table=' + encodeURIComponent("group");
     
-                    //var oReq = new XMLHttpRequest();
+            //         //var oReq = new XMLHttpRequest();
                   
-                  	//oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                    //oReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    //oReq.onload = reqListener;
-                    //oReq.open("post", "/group/group", true);
-                    //oReq.send(body);
-                };
-            }
+            //       	//oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            //         //oReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            //         //oReq.onload = reqListener;
+            //         //oReq.open("post", "/group/group", true);
+            //         //oReq.send(body);
+            //     };
+            // }
             
         </script>
 </body>
