@@ -3,8 +3,8 @@ const getStringNowDateInMyLikeFormat=()=>{
     let now=new Date();
     let toReturn=""+
         now.getFullYear()+"."+
-        now.getMinutes()+"."+
-        now.getDay()+" "+
+        (now.getMonth()+1)+"."+
+        (now.getDay()+1)+" "+
         now.getHours()+":"+
         now.getMinutes()+":"+
         now.getSeconds()+":"+

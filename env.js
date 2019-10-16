@@ -5,7 +5,7 @@ class ENV{
             express_port:9678,
             express_host:"localhost",
             isGlitch:false,
-            path_db:"./db/dontOpen/db.sqlite",
+            //path_db:"./db/dontOpen/db.sqlite",
         };
     }
     get(name){

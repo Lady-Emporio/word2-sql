@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <style>
+      h1{
+        display:inline-block;
+      }
+      #back_to_list_group{
+        display:inline-block;
+        margin-left:40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <%if (exist) { %>
+    <h1>Group:<%=group.id%></h1>
+    <%}else { %>
+    <h1>New group:</h1>
+    <%}%>
+    <input id="back_to_list_group" type="button" onclick="location.href = '/group/';" value="Back to list group">
+    </div>
+    <form method="post">
+      <input name="id" type="hidden" value="<%=(  (!exist) ? "n": group.id )%>">
+      <%if (exist) { %>
+      <label for="name">Имя:</label>
+      <input id="name" type="text" name="name" value="<%=group.name%>"><br>
+      <span id="createdAt"></span><br>
+      <span id="updatedAt"></span><br>
+      <input type="submit" value="Save">
+      <%}else { %>
+      <input type="text" name="name" value="<%=(
+        (new Date().getFullYear())+"."+
+        (new Date().getMonth()+1)+"."+
+        (new Date().getDay()+1) )%>
+      ">
+      <input type="submit" value="Create">
+      <%}%>
+    </form>
+    
+
+  </body>
+  <%if (exist) { %>
+      <script>
+      function updateData(){
+        let createdAt="<%=group.createdAt%>";
+        let updatedAt="<%=group.updatedAt%>";
+        
+        let elem_createdAt=document.getElementById("createdAt");
+        let elem_updatedAt=document.getElementById("updatedAt");
+        
+        elem_createdAt.innerText="Создан: "+createdAt;
+        elem_updatedAt.innerText="Изменен: "+updatedAt;
+      };
+      updateData();
+    </script>
+  <% } %>
+</html>

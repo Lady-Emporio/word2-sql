@@ -39,4 +39,5 @@ async function getGroupById(id){
 module.exports={
   getAndCreateGroup:getAndCreateGroup,
   getListGroup:getListGroup,
+  getGroupById:getGroupById,
 }
